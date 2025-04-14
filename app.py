@@ -101,6 +101,18 @@ if st.button("Prediksi Kanker Kulit"):
         class_name, description = classes[predicted_class]
 
         # Tampilkan hasil
+        # Tampilkan hasil dengan confidence level
+        st.markdown(
+            f"<div class='result-box'>"
+            f"Prediksi: {class_name} - {description}<br>"
+            f"Confidence: {confidence:.2f}%"
+            f"</div>",
+            unsafe_allow_html=True
+        )
+        st.markdown("#### Confidence Tiap Kelas:")
+        for i, prob in enumerate(prediction[0]):
+            label, full_name = classes[i]
+            st.markdown(f"- {label} ({full_name}): **{prob * 100:.2f}%**")
         st.markdown(f"<div class='result-box'>Prediksi: {class_name} - {description}</div>", unsafe_allow_html=True)
     else:
         st.warning("Harap unggah gambar terlebih dahulu.")
