@@ -99,6 +99,7 @@ if st.button("Prediksi Kanker Kulit"):
         prediction = model.predict(img_array)
         predicted_class = np.argmax(prediction)
         class_name, description = classes[predicted_class]
+        confidence = prediction[0][predicted_class] * 100  # Dalam persen
 
         # Tampilkan hasil
         # Tampilkan hasil dengan confidence level
